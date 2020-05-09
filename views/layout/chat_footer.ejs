@@ -1,0 +1,146 @@
+<script src="../chatting/jquery-3.4.1.min.js"></script>
+<script src="../chatting/popper.min.js"></script>
+<script src="../chatting/bootstrap.min.js"></script>
+<script src="../chatting/jquery.nicescroll.min.js"></script>
+<script src="../chatting/soho.min.js"></script>
+<script src="../chatting/examples.js"></script>
+<script src="../chatting/select2.min.js"></script>
+
+<div id="ascrail2000" class="nicescroll-rails nicescroll-rails-vr" style="width: 4px; z-index: auto; cursor: default; position: absolute; top: 136px; left: 1501px; height: 0px; opacity: 0; display: block;"><div class="nicescroll-cursors" style="position: relative; top: 192px; float: right; width: 4px; height: 303px; background-color: rgba(66, 66, 66, 0.2); border: 0px; background-clip: padding-box; border-radius: 5px;"></div></div><div id="ascrail2000-hr" class="nicescroll-rails nicescroll-rails-hr" style="height: 4px; z-index: auto; top: 132px; left: 460px; position: absolute; cursor: default; display: none; width: 1041px; opacity: 0;"><div class="nicescroll-cursors" style="position: absolute; top: 0px; height: 4px; width: 1045px; background-color: rgba(66, 66, 66, 0.2); border: 0px; background-clip: padding-box; border-radius: 5px; left: 0px;">
+
+</div>
+</div>
+</body>
+</html>
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+
+$(function () {
+  var socket = io.connect();
+  $('#chatform').submit(function(e){
+    e.preventDefault(); 
+    socket.emit('<%=room_id%>', $('#m').val());
+    $('#m').val('');
+    return false;
+  });
+  socket.on('<%=room_id%>', function(msg){  
+    $(function () {
+      var ChatosExamle = {
+        Message: {
+          add: function (message, type) {
+            var chat_body = $('.layout .content .chat .chat-body');
+            if (chat_body.length > 0) {
+              type = type ? type : '';
+              message = message ? message : msg
+              $('.layout .content .chat .chat-body .messages').append('<div class="message-item outgoing-message' + type + '"><div class="message-content">' + message + '</div><div class="message-action">PM 14:25 ' + (type ? '<i class="ti-check"></i>' : '') + '</div></div>');
+              chat_body.scrollTop(chat_body.get(0).scrollHeight, -1).niceScroll({
+                cursorcolor: 'rgba(66, 66, 66, 0.20)',
+                cursorwidth: "4px",
+                cursorborder: '0px'
+              }).resize();
+            }
+          }
+        }
+      };
+      setTimeout(function () {
+        ChatosExamle.Message.add();
+      }, 1);
+
+      setTimeout(function () {
+        $('#call').modal('show');
+      }, 2000);
+
+      $(document).on('submit', '.layout .content .chat .chat-footer form', function (e) {
+        e.preventDefault();
+
+        var input = $(this).find('input[type=text]');
+        var message = input.val();
+
+        message = $.trim(message);
+
+        if (message) {
+          ChatosExamle.Message.add(message, 'outgoing-message');
+          input.val('');
+        } else {
+          input.focus();
+        }
+      });
+
+      $(document).on('click', '.layout .content .sidebar-group .sidebar .list-group-item', function () {
+        if (jQuery.browser.mobile) {
+          $(this).closest('.sidebar-group').removeClass('mobile-open');
+        }
+      });
+
+    });
+
+  });
+});
+
+
+$( document ).ready(function() {
+
+ url = window.location.href.split('start_chating_single/')[1]
+ if (url == undefined){
+   url = window.location.href.split('start_chating_group/')[1]
+ }
+ $('li#'+url).addClass("open-chat");
+
+ $('select.js-example-basic-multiple.select2-hidden-accessible').addClass("form-control");
+
+ $('.js-example-basic-multiple').select2();
+
+});
+
+
+$('.create_group').on('click',function(){
+  var user_ids = []
+  var name = $('#group_name').val();
+  var users = $("#groupusers").select2('data')
+
+  $.each($(users), function(){    
+   user_ids.push(this.id)
+ });
+
+  $.ajax({
+    type: "POST",
+    url: '/new_chat_group',
+    data: {user_ids:user_ids,name:name}, 
+    success: function(data)
+    {
+     window.location.href="/start_chating_group/"+data  
+   }
+ });
+
+
+});
+
+
+
+
+</script>
+<style type="text/css">
+.layout .content .sidebar-group .sidebar .list-group-item:before {
+ width: 100%;
+}
+
+body.dark .layout .content .sidebar-group .sidebar .list-group-item .users-list-body .users-list-action {
+  background-color: #ff9800;
+}
+
+.layout .content .sidebar-group .sidebar .list-group-item .users-list-body .users-list-action .new-message-count {
+  background-color: #ff9800;
+
+}
+.layout .content .sidebar-group .sidebar .list-group-item .users-list-body .users-list-action {
+  top: 17px;
+  padding: 0 5px !important;
+}
+
+body.dark .layout .content .sidebar-group .sidebar>form input[type=text] {
+ background-color: #5a5c66 !important;
+ color: rgba(255,255,255,.7);
+}
+</style>

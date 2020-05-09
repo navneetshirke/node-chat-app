@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<!-- saved from url=(0026)http://localhost:3000/chat -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Protonshub</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="http://localhost:3000/images/icons/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="./Protonshub_files/font-awesome.min.css">	
+	<link rel="stylesheet" type="text/css" href="./Protonshub_files/main.css">
+	<link rel="stylesheet" type="text/css" href="./Protonshub_files/style.css">
+	<link rel="stylesheet" type="text/css" href="./Protonshub_files/util.css">
+	<link rel="stylesheet" type="text/css" href="./Protonshub_files/util.css">
+	<link rel="stylesheet" type="text/css" href="./Protonshub_files/custome.css">
+	<link rel="stylesheet" href="./Protonshub_files/chat.css">
+	
+	<link rel="stylesheet" href="./Protonshub_files/bootstrap.css">
+	<link rel="stylesheet" href="./Protonshub_files/bootstrap.min.css">
+	<link rel="stylesheet" href="./Protonshub_files/bootstrap.rtl.css">
+	<link rel="stylesheet" href="./Protonshub_files/bootstrap.rtl.min.css">
+	<link rel="stylesheet" href="./Protonshub_files/default.css">
+	<link rel="stylesheet" href="./Protonshub_files/default.min.css">
+	<link rel="stylesheet" href="./Protonshub_files/default.rtl.css">
+	<link rel="stylesheet" href="./Protonshub_files/default.rtl.min.css">
+	<link rel="stylesheet" href="./Protonshub_files/semantic.css">
+	<link rel="stylesheet" href="./Protonshub_files/semantic.min.css">
+	<link rel="stylesheet" href="./Protonshub_files/semantic.rtl.css">
+	<link rel="stylesheet" href="./Protonshub_files/semantic.rtl.min.css">
+	<link rel="stylesheet" href="./Protonshub_files/alertify.css">
+	<link rel="stylesheet" href="./Protonshub_files/alertify.min.css">
+	<link rel="stylesheet" href="./Protonshub_files/alertify.rtl.css">
+	<link rel="stylesheet" href="./Protonshub_files/alertify.rtl.min.css">
+
+
+	<link rel="stylesheet" href="./Protonshub_files/bootstrap.min(1).css">
+</head>
+<body>
+	<div class="modal fade" id="addproject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-md" role="document">
+  <div class="modal-content">
+    <div class="modal-body">
+
+
+      <div class="container py-2">
+
+        <div class="row my-2">        
+          <div class="col-md-12 ">
+            <h2 class="text-center font-weight-light ">Add New Project</h2>
+          </div>
+        </div>
+
+        <form role="form" action="http://localhost:3000/create_project" method="POST" enctype="multipart/form-data">
+
+          <div class="row my-2">
+            <div class="col-md-12">
+              <div class="form-group row">
+                <div class="col-md-12"> 
+                  <input name="name" class="form-control  text-center" type="text" value="" placeholder="Enter New Project Name">
+                  <input type="hidden" name="id" value="">
+                  </div>
+                  </div> 
+                  </div>       
+                  </div>
+
+                  <hr>
+
+                  <div class="row my-2">
+                  <div class="col-md-12">
+                  <div class="form-group row">
+                  <div class="col-md-12">
+                  <input name="description" class="form-control text-center" type="text" value="" placeholder="Enter New Project Description">
+                  </div>
+                  </div> 
+                  </div>       
+                  </div>
+
+                  <hr>
+
+                  <div class="row my-2">
+                  <div class="col-md-12">
+                  <div class="upload-btn-wrapper">
+                  <button class="upload-btn">Upload a icon</button>
+
+                  <input type="file" accept="image/*" name="photo">
+
+
+                  </div>
+
+                  </div>
+                  </div>       
+                  </form></div>
+
+
+                  <div class="modal-footer  ">
+                  <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-outline-primary ">Save changes</button>
+                  </div>
+
+                  
+
+
+
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  
+
+
+
+                  <style type="text/css">
+
+                  .upload-btn-wrapper {
+                    position: relative;
+                    overflow: hidden;
+                    display: inline-block;
+                  }
+                  div.preview-images > img {
+                    width: 30%;
+                  }
+
+                  .upload-btn {
+                    border: 2px solid gray;
+                    color: gray;
+                    background-color: white;
+                    padding: 8px 163px;
+                    border-radius: 8px;
+                    font-weight: bold;
+                  }
+
+                  .upload-btn-wrapper input[type=file] {
+                    font-size: 100px;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    opacity: 0;
+                  }
+                  </style>
+	<div class="modal fade" id="editprofile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<form role="form" action="http://localhost:3000/edit_user_profile" method="POST" enctype="multipart/form-data">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+
+       <div class="container py-2">
+        <div class="row my-2">
+          <div class="col-md-8 order-md-1 personal-info">
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label form-control-label">First name</label>
+              <div class="col-md-9">
+                <input class="form-control" type="text" value="Jane" name="first_name">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label form-control-label">Last name</label>
+              <div class="col-md-9">
+                <input class="form-control" type="text" name="last_name" value="Bishop">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label form-control-label">Email</label>
+              <div class="col-md-9">
+                <input class="form-control" type="email" name="email" value="email@gmail.com">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label form-control-label">Address</label>
+              <div class="col-md-9">
+                <input class="form-control" type="text" name="address" value="" placeholder="Street">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label form-control-label">Username</label>
+              <div class="col-md-9">
+                <input class="form-control" type="text" name="username" value="janeuser">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label form-control-label">DOB</label>
+              <div class="col-md-9">
+                <input class="form-control" type="date" name="dob" value="">
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-md-4 order-md-0 text-center">
+            <img src="./Protonshub_files/trickst3r.png" class="mx-auto img-fluid rounded-circle" alt="avatar">
+            <h6 class="my-4">Upload a new photo</h6>
+            <div class="input-group px-xl-4">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputGroupFile02" name="photo">
+                <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
+              </div>
+              <div class="input-group-append">
+                <button class="btn btn-secondary"><i class="fa fa-upload"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-outline-secondary pt-2 mt-3" data-dismiss="modal">Close</button>
+
+        <div class="container-login100-form-btn ">
+          <div class="wrap-login100-form-btn">
+            <div class="login100-form-bgbtn"></div>
+            <button class="login100-form-btn" type="submit">Save changes</button>
+          </div>
+        </div> 
+
+      
+    </div>
+
+
+
+
+    <style type="text/css">
+    .form-control {
+      height: 40px !important;
+      background: #ececec;
+      color: #000;
+      font-size: 13px;
+      border-radius: 4px;
+      -webkit-box-shadow: none !important;
+      box-shadow: none !important;
+      border: transparent;
+    }
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+</div>
+</div></form>
+</div>
+
+	
+		<div class="messaging">
+	<div class="inbox_msg">
+		<div class="inbox_people">
+			<div class="headind_srch">
+				<div class="recent_heading">
+					<h4>Recent</h4>
+				</div>
+				<div class="srch_bar">
+					<div class="stylish-input-group">
+						<input type="text" class="search-bar" placeholder="Search">
+						<span class="input-group-addon">
+							<button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+						</span> </div>
+					</div>
+				</div>
+				<div class="inbox_chat">
+					<div class="chat_list active_chat">
+						<div class="chat_people">
+							<div class="chat_img"> <img src="./Protonshub_files/user-profile.png" alt="sunil"> </div>
+							<div class="chat_ib">
+								<h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+								<p>Test, which is a new approach to have all solutions 
+								astrology under one roof.</p>
+							</div>
+						</div>
+					</div>
+					<div class="chat_list">
+						<div class="chat_people">
+							<div class="chat_img"> <img src="./Protonshub_files/user-profile.png" alt="sunil"> </div>
+							<div class="chat_ib">
+								<h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+								<p>Test, which is a new approach to have all solutions 
+								astrology under one roof.</p>
+							</div>
+						</div>
+					</div>
+					<div class="chat_list">
+						<div class="chat_people">
+							<div class="chat_img"> <img src="./Protonshub_files/user-profile.png" alt="sunil"> </div>
+							<div class="chat_ib">
+								<h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+								<p>Test, which is a new approach to have all solutions 
+								astrology under one roof.</p>
+							</div>
+						</div>
+					</div>
+					<div class="chat_list">
+						<div class="chat_people">
+							<div class="chat_img"> <img src="./Protonshub_files/user-profile.png" alt="sunil"> </div>
+							<div class="chat_ib">
+								<h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+								<p>Test, which is a new approach to have all solutions 
+								astrology under one roof.</p>
+							</div>
+						</div>
+					</div>
+					<div class="chat_list">
+						<div class="chat_people">
+							<div class="chat_img"> <img src="./Protonshub_files/user-profile.png" alt="sunil"> </div>
+							<div class="chat_ib">
+								<h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+								<p>Test, which is a new approach to have all solutions 
+								astrology under one roof.</p>
+							</div>
+						</div>
+					</div>
+					<div class="chat_list">
+						<div class="chat_people">
+							<div class="chat_img"> <img src="./Protonshub_files/user-profile.png" alt="sunil"> </div>
+							<div class="chat_ib">
+								<h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+								<p>Test, which is a new approach to have all solutions 
+								astrology under one roof.</p>
+							</div>
+						</div>
+					</div>
+					<div class="chat_list">
+						<div class="chat_people">
+							<div class="chat_img"> <img src="./Protonshub_files/user-profile.png" alt="sunil"> </div>
+							<div class="chat_ib">
+								<h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+								<p>Test, which is a new approach to have all solutions 
+								astrology under one roof.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="mesgs">
+				<div class="msg_history">
+
+					<div class="incoming_msg">
+						<div class="incoming_msg_img">
+							<img src="./Protonshub_files/user-profile.png" alt="sunil"> </div>
+							<div class="received_msg">
+								<div class="received_withd_msg">
+									<p>Test which is a new approach to have all
+									solutions</p>
+									<span class="time_date"> 11:01 AM    |    June 9</span></div>
+								</div>
+							</div>
+
+							<div class="outgoing_msg">
+								<div class="sent_msg">
+									<p>Test which is a new approach to have all
+									solutions</p>
+									<span class="time_date"> 11:01 AM    |    June 9</span> </div>
+								</div>
+
+								<div class="incoming_msg">
+									<div class="incoming_msg_img"> <img src="./Protonshub_files/user-profile.png" alt="sunil"> </div>
+									<div class="received_msg">
+										<div class="received_withd_msg">
+											<p>Test, which is a new approach to have</p>
+											<span class="time_date"> 11:01 AM    |    Yesterday</span></div>
+										</div>
+									</div>
+
+									<div class="outgoing_msg">
+										<div class="sent_msg">
+											<p>Apollo University, Delhi, India Test</p>
+											<span class="time_date"> 11:01 AM    |    Today</span> </div>
+										</div>
+
+										<div class="incoming_msg">
+											<div class="incoming_msg_img"> <img src="./Protonshub_files/user-profile.png" alt="sunil"> </div>
+											<div class="received_msg">
+												<div class="received_withd_msg">
+													<p>We work directly with our designers and suppliers,
+														and sell direct to you, which means quality, exclusive
+													products, at a price anyone can afford.</p>
+													<span class="time_date"> 11:01 AM    |    Today</span></div>
+												</div>
+											</div>
+										</div>
+
+										<div class="type_msg">
+											<div class="input_msg_write">
+												<form action="http://localhost:3000/chat">												
+													<input id="m" autocomplete="off" type="text" class="write_msg" placeholder="Type a message">
+													<button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+												</form>
+											</div>
+										</div>
+										
+									</div>
+								</div>
+							</div>
+							<ul id="messages"></ul>
+							
+
+<script src="./Protonshub_files/alertify.min.js"></script>
+<script src="./Protonshub_files/alertify.js"></script>
+<script src="./Protonshub_files/custome.js"></script>
+<script src="./Protonshub_files/jquery.min.js"></script>
+<script src="./Protonshub_files/popper.min.js"></script>
+<script src="./Protonshub_files/bootstrap.min.js"></script>
+
+
+							<script src="./Protonshub_files/socket.io.js"></script>
+							<script src="./Protonshub_files/jquery-1.11.1.js"></script>
+							<script>
+								$(function () {
+									var socket = io();
+									$('form').submit(function(e){
+										e.preventDefault(); 
+										socket.emit('chat message', $('#m').val());
+										$('#m').val('');
+										return false;
+									});
+									socket.on('chat message', function(msg){
+										$('#messages').append($('<li>').text(msg));
+									});
+								});
+							</script>
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>
